@@ -1,0 +1,11 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Page d'accueil{% endblock %}
+{% block contenu %}
+{% if infos_invitation %}
+	<aside id="invitation">
+		<p>L'entraîneur {{ infos_invitation.0 }} vous a invité à rejoindre le groupe "{{ infos_invitation.1 }}"</p>
+		<p><a href="/groupeinvite?reponse=oui">Accepter</a> ou <a href="/groupeinvite?reponse=non">Refuser</a></p>
+	</aside>
+{% endif %}
+<iframe width="560" height="315" src="http://www.youtube.com/embed/GFFQN2fNGaU?rel=0" frameborder="0" allowfullscreen></iframe>
+{% endblock %}

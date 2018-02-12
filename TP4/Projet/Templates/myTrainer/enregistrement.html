@@ -1,0 +1,22 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Création d'un compte utilisateur{% endblock %}
+{% block nav %}{% endblock %}
+{% block contenu %}
+{% if form %}
+    <form id="enregistrement" action="enregistrement" method="post">{% csrf_token %}
+	{% if invite %}
+		<input type="hidden" name="invite" value="{{ invite }}"/>
+	{% endif %}
+	{% if token %}
+		<input type="hidden" name="token" value="{{ token }}"/>
+	{% endif %}
+		{{ form.as_p }}
+		{{ form.message.errors }}
+		<input type="submit" />
+	</form>
+{% elif message %}
+	<p>{{ message }}</p>
+{% else %}
+    <p>Votre compte a été créé. Avant de pouvoir vous connecter, vous devez l'activer à l'aide du lien fourni dans un courriel venant de vous être envoyé.</p>
+{% endif %}
+{% endblock %}

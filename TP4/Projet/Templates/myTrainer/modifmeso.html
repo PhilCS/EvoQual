@@ -1,0 +1,44 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Modification d'un mésocycle{% endblock %}
+{% block contenu %}
+{% if calendrier %}
+	<form method="post">{% csrf_token %}
+		<input type="hidden" name="modif-mesocycle-{{ meso.pk }}" value="oui"/>
+		<p>
+			<table id="tblMeso" summary="Ce tableau représente un calendrier du mésocycle sélectionné, avec un choix de sélection d'entraînement pour chaque journée.">
+				<caption>Entraînements pour {{ meso.nom }}</caption>
+				<tr>
+					<th id="t1">Dimanche</th>
+					<th id="t2">Lundi</th>
+					<th id="t3">Mardi</th>
+					<th id="t4">Mercredi</th>
+					<th id="t5">Jeudi</th>
+					<th id="t6">Vendredi</th>
+					<th id="t7">Samedi</th>
+				</tr>
+			{% autoescape off %}
+			{% for rangee in calendrier %}
+				<tr>
+					{{ rangee }}
+				</tr>
+			{% endfor %}
+			{% endautoescape %}
+			</table>
+		</p>
+	{% if not meso.public %}
+		<p>
+			Publier : <input type="checkbox" name="publier" value="oui"/>
+		</p>
+	{% endif %}
+		<p>
+			<input type="submit" name="sauvegarde-mesocycle" value="Sauvegarder"/>
+		</p>
+	</form>
+{% elif message %}
+	{% autoescape off %}
+	<p>{{ message }}</p>
+	{% endautoescape %}
+{% else %}
+    <p>Seul les entraîneurs ont accès à cette section.</p>
+{% endif %}
+{% endblock %}

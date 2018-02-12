@@ -1,0 +1,18 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Connexion{% endblock %}
+{% block nav %}{% endblock %}
+{% block contenu %}
+{% if form %}
+    <form id="login" method="post">{% csrf_token %}
+	{{ form.as_p }}
+	{{ form.message.errors }}
+	<input type="submit" value="Connexion"/>
+	</form>
+	<form action="/enregistrement">
+		<input type="submit" value="Enregister"/>
+	</form>
+{% else %}
+    <p>Patrick: Once, there was an ugly barnacle. He was so ugly, that everyone died! The end.</p>
+	<p>SpongeBob: ಠ_ಠ</p>
+{% endif %}
+{% endblock %}

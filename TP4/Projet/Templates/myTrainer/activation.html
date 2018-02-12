@@ -1,0 +1,9 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Activation du compte{% endblock %}
+{% block nav %}{% endblock %}
+{% block contenu %}
+{% if email_actif %}
+	<p>Votre compte "{{ email_actif }}" est maintenant activé.</p>
+	<p><a href="/login">Accédez à la page de connexion</a></p>
+{% endif %}
+{% endblock %}

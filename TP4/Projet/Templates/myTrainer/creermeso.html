@@ -1,0 +1,17 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Création d'un mésocycle{% endblock %}
+{% block contenu %}
+{% if form %}
+    <form id="creermeso" method="post">{% csrf_token %}
+	{{ form.as_p }}
+	{{ form.message.errors }}
+	<input type="submit" value="Créer" />
+	</form>
+{% elif message %}
+	{% autoescape off %}
+	<p>{{ message }}</p>
+	{% endautoescape %}
+{% else %}
+    <p>Seul les entraîneurs ont accès à cette section.</p>
+{% endif %}
+{% endblock %}

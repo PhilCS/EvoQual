@@ -1,0 +1,44 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Liste des mésocycles{% endblock %}
+{% block contenu %}
+{% if mesos %}
+	{% if mesos_exists %}
+		<form action="/modifmeso" method="post">{% csrf_token %}
+			<p>
+				<table id="tblMeso" summary="Ce tableau représente la liste des mésocycles créé par l'entraîneur connecté pour son groupe, ainsi qu'une option pour modifier chaque mésocycle.">
+					<caption>Liste des mésocycles</caption>
+					<tr>
+						<th id="t1">Période</th>
+						<th id="t2">État</th>
+						<th id="t3">Options</th>
+					</tr>
+				{% for Mesocycle in mesos %}
+					<tr>
+						<td headers="1">{{ Mesocycle.nom }}</td>
+					{% if Mesocycle.public %}
+						<td headers="2">Publié</td>
+					{% else %}
+						<td headers="2">Brouillon</td>
+					{% endif %}
+						<td headers="3">
+							<input type="submit" name="modif-mesocycle-{{ Mesocycle.pk }}" value="Modifier" />
+						</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</p>
+		</form>
+	{% else %}
+		<p class="italic">Aucun mésocycle</p>
+	{% endif %}
+	<p>
+		<a href="/creermeso">Créer un mésocycle</a>
+	</p>
+{% elif message %}
+	{% autoescape off %}
+	<p>{{ message }}</p>
+	{% endautoescape %}
+{% else %}
+    <p>Seul les entraîneurs ont accès à cette section.</p>
+{% endif %}
+{% endblock %}

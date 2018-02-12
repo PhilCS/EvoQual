@@ -1,0 +1,24 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Création d'un groupe{% endblock %}
+{% block contenu %}
+{% if form %}
+    <form id="groupe" method="post">{% csrf_token %}
+	{{ form.as_p }}
+	{{ form.message.errors }}
+	<input type="submit" value="Créer" />
+	</form>
+{% elif groupe_cree %}
+	<p>Votre groupe a été créé. Les athlètes invités n'étant pas inscrits sur le site vont recevoir un courriel d'invitation sous peu.</p>
+	{% if courriels %}
+    <ul>
+    {% for adresse in courriels %}
+        <li>{{ adresse }}</li>
+    {% endfor %}
+    </ul>
+	{% endif %}
+{% elif message %}
+	<p>{{ message }}</p>
+{% else %}
+    <p>Seul les entraîneurs ont accès à cette section.</p>
+{% endif %}
+{% endblock %}

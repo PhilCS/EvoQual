@@ -1,0 +1,7 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Affichage d'un mésocycle{% endblock %}
+{% block contenu %}
+{% autoescape off %}
+    {{cal}}
+{% endautoescape %}
+{% endblock %}

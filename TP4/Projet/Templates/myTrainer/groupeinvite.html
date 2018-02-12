@@ -1,0 +1,12 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Invitation à joindre un groupe{% endblock %}
+{% block contenu %}
+{% if accepter %}
+	<p>Vous êtes maintenant membre du groupe "{{ accepter }}".</p>
+{% else %}
+	<p>Vous avez décliné l'invitation.</p>
+{% endif %}
+	<p>
+		<a href="/">Retour à la page d'accueil</a>
+	</p>
+{% endblock %}

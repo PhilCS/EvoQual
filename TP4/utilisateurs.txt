@@ -1,0 +1,23 @@
+Admin (fonctionne seulement avec le panneau d'admin):
+user = root
+pass = root
+
+Coach sans groupe:
+user = csg@csg.com
+pass = csg
+
+Athlète sans groupe:
+user = asg@asg.com
+pass = asg
+
+Coach avec groupe, avec un mésocycle publié pour le mois de Décembre 2012:
+user = cag@cag.com
+pass = cag
+
+Athlète avec groupe, membre du groupe de cag@cag.com:
+user = aag@aag.com
+pass = aag
+
+Athlète avec invitation au groupe de cag@cag.com en attente:
+user = aig@aig.com
+pass = aig

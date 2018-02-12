@@ -1,0 +1,13 @@
+{% extends "myTrainer/base.html" %}
+{% block titre %}Les activités{% endblock %}
+{% block contenu %}
+{% if acts %}
+    <ul>
+    {% for Activite in acts %}
+        <li> {{Activite.type}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Pas d'activités</p>
+{% endif %}
+{% endblock %}

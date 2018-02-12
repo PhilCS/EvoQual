@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+<!-- Syntaxe: HTML5 Polyglot, Conformité: HTML5 et XML (XHTML5) -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<title>Entraînmax</title>
+	<link rel="stylesheet" href="/myTrainer/css/styles.css" />
+	<script type="text/javascript" src="/myTrainer/scripts/jq.js"></script>
+	{%block autrescript%}{%endblock%}
+</head>
+
+<body>
+	<!-- Division principale qui contient tous les éléments de la page -->
+	<div id="page">
+
+		<!-- En-tête principal -->
+		<header>
+			<p>{% block titre %}{% endblock %}</p>
+		</header>
+
+		<!-- Menu principal -->
+		{%block nav%}
+		<nav>
+			<ul>
+				<li>
+					<a href="{%url accueilUrl %}">Accueil</a>
+				</li>
+				<li>
+					<a href="{%url groupeUrl %}">Création d'un groupe</a>
+				</li>
+				<li>
+					<a href="{%url mesocycleUrl %}">Affichage du mésocycle</a>
+				</li>
+				<li>
+					<a href="{%url listemesoUrl %}">Gestion des mésocycles</a>
+				</li>
+				<li>
+					<a href="{%url logoutUrl %}">Déconnexion</a>
+				</li>
+			</ul>
+		</nav>
+		{%endblock%}
+		<!-- Zone pour le contenu principal de la page (change à chaque page) -->
+		<div id="contenu">
+
+			 {% block contenu %}{% endblock %}
+
+		</div>  <!-- Fin de la division "contenu" -->
+
+		<!-- Pied de page principal -->
+		<footer>
+		</footer>
+
+	</div>  <!-- Fin de la division "page" -->
+</body>
+
+</html>
